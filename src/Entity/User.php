@@ -4,9 +4,35 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={"access_control"="is_granted('ROLE_USER')"},
+ *     collectionOperations={
+ *          "get"={
+ *              "method"="GET",
+ *              "normalization_context"={"groups"={"index"}},
+ *              "swagger_context"={"summary"="Consulter la liste des utilisateurs inscrits"}
+ *          },
+ *          "post"={
+ *              "method"="POST",
+ *              "swagger_context"={"summary"="Ajouter un nouvel utilisateur"}
+ *          },
+ *     },
+ *     itemOperations={
+ *          "get"={
+ *              "method"="GET",
+ *              "normalization_context"={"groups"={"show"}},
+ *              "swagger_context"={"summary"="Consulter le détail d'un utilisateur inscrit"}
+ *          },
+ *          "delete"={
+ *              "method"="DELETE",
+ *              "swagger_context"={"summary"="Supprimer un utilisateur"}
+ *          },
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User
@@ -15,32 +41,46 @@ class User
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"index", "show"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2,minMessage="Le nom doit contenir au moins 2 caractères")
+     * @Assert\NotBlank
+     * @Groups({"index", "show"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2,minMessage="Le prénom doit contenir au moins 2 caractères")
+     * @Assert\NotBlank
+     * @Groups({"index", "show"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' n'est pas valide."
+     * )
+     * @Assert\NotBlank
+     * @Groups({"show"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Groups({"show"})
      */
     private $address;
 
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $client;
 

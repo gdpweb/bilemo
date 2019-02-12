@@ -30,7 +30,7 @@ class ClientFixtures extends Fixture
 
         for ($i = 1; $i < 5; $i++) {
             $client = new Client();
-            $client->setUsername('Client ' . $i);
+            $client->setUsername('client' . $i);
             $password = $this->encoder->encodePassword($client, 'bilemo');
             $client->setPassword($password);
             $client->setEmail('client' . $i . '@gdpweb.fr');
