@@ -2,18 +2,22 @@
 
 namespace App\Controller;
 
+use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
 {
     /**
-     * @Route("/api/essa", name="api")
+     * @Route("/admin", name="admin")
      */
-    public function index()
+
+    public function essai(ClientRepository $clientRepository)
     {
-        return $this->render('api/index.html.twig', [
-            'controller_name' => 'ApiController',
-        ]);
+
+        $clients = $clientRepository->findAll();
+        var_dump($clients[1]->getUsers()->first());
+        return $this->render('api/index.html.twig');
+
     }
 }
