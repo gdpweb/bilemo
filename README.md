@@ -14,3 +14,7 @@ This project has been realized as part of project 7 **Openclassroom** training.
 ## Licence
 
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
+## Maintainability
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/570786c6e4aa90d0627c/maintainability)](https://codeclimate.com/github/gdpweb/bilemo/maintainability)

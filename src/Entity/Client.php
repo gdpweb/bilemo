@@ -6,34 +6,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * /**
- * @ApiResource(
- *     attributes={"access_control"="is_granted('ROLE_ADMIN')"},
- *     collectionOperations={
- *          "get"={
- *              "method"="GET",
- *              "normalization_context"={"groups"={"index"}},
- *              "swagger_context"={"summary"="Permet de récupérer la liste des clients Bilemo. (Administrateur)"},
- *              "access_control"="is_granted('ROLE_ADMIN')",
- *              "access_control_message"="Reserver au administrateur."
- *          },
- *     },
- *     itemOperations={
- *          "get"={
- *              "method"="GET",
- *              "normalization_context"={"groups"={"show"}},
- *              "swagger_context"={"summary"="Permet de récupérer le détail d'un client BileMo. (Administrateur)"},
- *              "access_control"="is_granted('ROLE_ADMIN')  and object.owner == client",
- *              "access_control_message"="Reserver au administrateur."
- *          },
- *     }
- * )
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+ * @UniqueEntity(fields="email", message="Cette adresse mail est déjà utilisée par un autre compte")
  */
 class Client implements UserInterface
 {
@@ -41,7 +21,6 @@ class Client implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"index", "show"})
      */
     private $id;
 
@@ -49,7 +28,6 @@ class Client implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=6,minMessage="L'identifiant doit contenir au moins 6 caractères")
      * @Assert\NotBlank
-     * @Groups({"index", "show"})
      */
     private $username;
     /**
@@ -58,7 +36,6 @@ class Client implements UserInterface
      *     message = "L'email '{{ value }}' n'est pas valide."
      * )
      * @Assert\NotBlank
-     * @Groups({"show"})
      */
     private $email;
 

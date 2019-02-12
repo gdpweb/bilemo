@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -18,6 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          },
  *          "post"={
  *              "method"="POST",
+ *              "normalization_context"={"groups"={"add"}},
  *              "swagger_context"={"summary"="Ajouter un nouvel utilisateur"}
  *          },
  *     },
@@ -34,6 +36,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields="email", message="Cette adresse mail est déjà utilisée par un autre compte")
  */
 class User
 {
@@ -49,7 +52,7 @@ class User
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=2,minMessage="Le nom doit contenir au moins 2 caractères")
      * @Assert\NotBlank
-     * @Groups({"index", "show"})
+     * @Groups({"index", "show","add"})
      */
     private $name;
 
@@ -57,7 +60,7 @@ class User
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=2,minMessage="Le prénom doit contenir au moins 2 caractères")
      * @Assert\NotBlank
-     * @Groups({"index", "show"})
+     * @Groups({"index", "show","add"})
      */
     private $firstname;
 
@@ -67,20 +70,20 @@ class User
      *     message = "L'email '{{ value }}' n'est pas valide."
      * )
      * @Assert\NotBlank
-     * @Groups({"show"})
+     * @Groups({"show","add"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
-     * @Groups({"show"})
+     * @Groups({"show","add"})
      */
     private $address;
 
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="users")
-     * @Assert\NotBlank
+     * @Groups({"show"})
      */
     private $client;
 
