@@ -12,7 +12,9 @@ security:
 
 
     firewalls:
-
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         login:
             pattern:  ^/api/login
             stateless: true
@@ -31,7 +33,8 @@ security:
                 - lexik_jwt_authentication.jwt_token_authenticator
 
     access_control:
-    #- { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api/phones, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     #- { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
     #- { path: ^/api/phones, roles: ROLE_USER }
     #- { path: ^/api/users, roles: ROLE_USER }

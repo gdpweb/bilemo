@@ -41,6 +41,6 @@ class UserSubscriber implements EventSubscriber
         if (!$entity instanceof User) {
             return;
         }
-        $entity->setClient($this->tokenStorage->getToken()->getUser());
+        //$entity->setClient($this->tokenStorage->getToken()->getUser());
     }
 }
