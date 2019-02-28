@@ -11,18 +11,6 @@
             "ref": "18727d8f229306860b46955f438e1897421da689"
         }
     },
-    "behat/behat": {
-        "version": "v3.5.0"
-    },
-    "behat/gherkin": {
-        "version": "v4.6.0"
-    },
-    "behat/transliterator": {
-        "version": "v1.2.0"
-    },
-    "container-interop/container-interop": {
-        "version": "1.2.0"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -152,6 +140,9 @@
     "nikic/php-parser": {
         "version": "v4.2.0"
     },
+    "ocramius/package-versions": {
+        "version": "1.4.0"
+    },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
     },
@@ -199,9 +190,6 @@
     },
     "symfony/cache": {
         "version": "v4.2.2"
-    },
-    "symfony/class-loader": {
-        "version": "v3.4.22"
     },
     "symfony/config": {
         "version": "v4.2.2"
