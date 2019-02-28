@@ -1,5 +1,6 @@
 api_platform:
   title: 'API BileMo'
+  version: '1.0.0'
   mapping:
     paths: ['%kernel.project_dir%/src/Entity']
   swagger:
@@ -15,3 +16,5 @@ api_platform:
     max_age: 3600
     # Default value for the response shared (proxy) max age.
     shared_max_age: 3600
+    vary: ['Content-Type', 'Authorization']
+    public: true
