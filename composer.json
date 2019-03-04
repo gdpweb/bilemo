@@ -1,6 +1,8 @@
 {
-    "type": "project",
+    "name": "bilemo/stephane-briere",
     "license": "proprietary",
+    "description": "projet 7 OpenClassrooms",
+    "type": "project",
     "require": {
         "php": "^7.1.3",
         "ext-ctype": "*",

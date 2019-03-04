@@ -1,19 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: brieres
- * Date: 06/02/2019
- * Time: 14:40
+
+/*
+ * This file is part of the Symfony package.
+ * (c) Stéphane BRIERE <stephanebriere@gdpweb.fr>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace App\Doctrine;
 
-
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
-use App\Entity\User;
 use App\Entity\Client;
+use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -47,15 +47,10 @@ final class CurrentClientExtension implements QueryCollectionExtensionInterface,
         $this->addWhere($queryBuilder, $resourceClass);
     }
 
-    /**
-     *
-     * @param QueryBuilder $queryBuilder
-     * @param string $resourceClass
-     */
     private function addWhere(QueryBuilder $queryBuilder, string $resourceClass)
     {
         $client = $this->tokenStorage->getToken()->getUser();
-        if ($client instanceof Client && User::class === $resourceClass ) {
+        if ($client instanceof Client && User::class === $resourceClass) {
             $rootAlias = $queryBuilder->getRootAliases()[0];
             $queryBuilder->andWhere(sprintf('%s.client = :current_client', $rootAlias));
             $queryBuilder->setParameter('current_client', $client->getId());

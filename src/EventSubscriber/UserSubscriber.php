@@ -1,13 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: brieres
- * Date: 12/02/2019
- * Time: 17:45
+
+/*
+ * This file is part of the Symfony package.
+ * (c) Stéphane BRIERE <stephanebriere@gdpweb.fr>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace App\EventSubscriber;
-
 
 use App\Entity\User;
 use Doctrine\Common\EventSubscriber;
@@ -21,7 +21,6 @@ class UserSubscriber implements EventSubscriber
      * @var TokenStorageInterface
      */
     private $tokenStorage;
-
 
     public function __construct(TokenStorageInterface $tokenStorage)
     {
@@ -41,6 +40,6 @@ class UserSubscriber implements EventSubscriber
         if (!$entity instanceof User) {
             return;
         }
-        //$entity->setClient($this->tokenStorage->getToken()->getUser());
+        $entity->setClient($this->tokenStorage->getToken()->getUser());
     }
 }
