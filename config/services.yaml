@@ -24,9 +24,14 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    #App\EventSubscriber\UserSubscriber:
+        #tags:
+       # - { name: doctrine.event_subscriber, connection: default }
+
     # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-    App\Doctrine\CurrentClientExtension:
-        tags:
-        - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
-        - { name: api_platform.doctrine.orm.query_extension.item }
+    # please note that last definitions always *replace* previous
+
+    #App\Doctrine\CurrentClientExtension:
+       # tags:
+       # - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
+        #- { name: api_platform.doctrine.orm.query_extension.item }

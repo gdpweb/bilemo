@@ -9,15 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApiController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/", name="index")
      */
 
-    public function essai(ClientRepository $clientRepository)
+    public function index()
     {
-
-        $clients = $clientRepository->findAll();
-        var_dump($clients[1]->getUsers()->first());
-        return $this->render('api/index.html.twig');
-
+        return $this->redirect('/api');
     }
 }
