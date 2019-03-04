@@ -1,8 +1,8 @@
-#API REST BileMo
+# API REST BileMo
 
 This project has been realized as part of project 7 **Openclassroom** training.
 
-###Server Requirements of the Web App
+### Server Requirements of the Web App
 - Application Server PHP 7.1 or higher
 - Database MySQL >= 5.7.11
 
@@ -25,7 +25,7 @@ Generate the SSH keys with JWT
 
 Test Api BileMo with Postman
 -----------------
-####Authentification JWT
+#### Authentification JWT
 - In the input field with the POST method, enter the following url : your_domain/api/login_check
 - In the body, select raw and JSON(application/json), write : 
 
@@ -37,7 +37,7 @@ Test Api BileMo with Postman
 - Using the Bearer authorization and paste your token.
 - **Documentation Postman** : [getpostman.com]( https://www.getpostman.com/)
 - **Documentation JWT** :  [LexikJWTAuthentication](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md)
-####Available operations
+#### Available operations
    
    1. GET /api/phones  
    2. GET /api/phones/{id}     
@@ -50,6 +50,6 @@ Licence
 --------
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-####Maintainability
+#### Maintainability
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/570786c6e4aa90d0627c/maintainability)](https://codeclimate.com/github/gdpweb/bilemo/maintainability)
