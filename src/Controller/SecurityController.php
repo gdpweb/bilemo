@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ * (c) Stéphane BRIERE <stephanebriere@gdpweb.fr>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Controller;
 
 use App\Entity\Client;
@@ -24,6 +31,7 @@ class SecurityController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($client);
         $em->flush();
+
         return new Response('L\'utilisateur a bien été créé');
     }
 
@@ -32,11 +40,11 @@ class SecurityController extends AbstractController
      */
     public function login(Request $request)
     {
-
         $client = $this->getUser();
-        return $this->json(array(
+
+        return $this->json([
             'username' => $client->getUsername(),
             'roles' => $client->getRoles(),
-        ));
+        ]);
     }
 }

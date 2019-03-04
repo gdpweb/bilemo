@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ * (c) Stéphane BRIERE <stephanebriere@gdpweb.fr>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\DataFixtures;
 
 use App\Entity\Client;
@@ -9,7 +16,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ClientFixtures extends Fixture
 {
-
     private $encoder;
 
     public function __construct(UserPasswordEncoderInterface $encoder)
@@ -19,7 +25,6 @@ class ClientFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-
         $client = new Client();
         $client->setUsername('admin');
         $password = $this->encoder->encodePassword($client, 'bilemo');
@@ -28,14 +33,14 @@ class ClientFixtures extends Fixture
         $client->setRoles(['ROLE_USER,ROLE_ADMIN']);
         $manager->persist($client);
 
-        for ($i = 1; $i < 5; $i++) {
+        for ($i = 1; $i < 5; ++$i) {
             $client = new Client();
-            $client->setUsername('client' . $i);
+            $client->setUsername('client'.$i);
             $password = $this->encoder->encodePassword($client, 'bilemo');
             $client->setPassword($password);
-            $client->setEmail('client' . $i . '@gdpweb.fr');
+            $client->setEmail('client'.$i.'@gdpweb.fr');
             $client->setRoles(['ROLE_USER']);
-            $this->addReference('client' . $i, $client);
+            $this->addReference('client'.$i, $client);
             $manager->persist($client);
         }
         $manager->flush();

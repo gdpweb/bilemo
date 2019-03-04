@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the Symfony package.
+ * (c) Stéphane BRIERE <stephanebriere@gdpweb.fr>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace DoctrineMigrations;
 
 use Doctrine\DBAL\Schema\Schema;
@@ -12,15 +19,15 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20190206081205 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return '';
     }
 
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+        $this->abortIf('mysql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE client RENAME INDEX uniq_8d93d649e7927c74 TO UNIQ_C7440455E7927C74');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_C7440455A76ED395');
@@ -30,10 +37,10 @@ final class Version20190206081205 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_8D93D64919EB6921 ON user (client_id)');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+        $this->abortIf('mysql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE client RENAME INDEX uniq_c7440455e7927c74 TO UNIQ_8D93D649E7927C74');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D64919EB6921');
