@@ -37,7 +37,9 @@ Generate the SSH keys with JWT
 
 Test Api BileMo with Postman
 -----------------
+
 #### Authentication JWT
+
 - In the input field with the POST method, enter the following url : your_domain/api/login_check
 - In the body, select raw and JSON(application/json), write : 
 
