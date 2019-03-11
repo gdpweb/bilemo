@@ -46,7 +46,7 @@ Test Api BileMo with Postman
             "password" : "bilemo"
         }
 
-- Using the Bearer authorization and paste your token.
+- In the authorization tab, use the bearer authorization and stick your token
 - **Documentation Postman** : [getpostman.com]( https://www.getpostman.com/)
 - **Documentation JWT** :  [LexikJWTAuthentication](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md)
 #### Available operations
@@ -62,6 +62,6 @@ Licence
 --------
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-####Maintainability
+#### Maintainability
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/570786c6e4aa90d0627c/maintainability)](https://codeclimate.com/github/gdpweb/bilemo/maintainability)
