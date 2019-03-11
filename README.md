@@ -9,11 +9,23 @@ This project has been realized as part of project 7 **Openclassroom** training.
 Installation
 -----------------
 - Clone the master branch
-- Install dependencies with: composer install
-- Create database: bin/console doctrine:database:create
-- Update database: in/console doctrine:migrations:migrate
-- Load data fixtures: bin/console doctrine:fixtures:load
-- Run PHP's built-in Web Server: bin/console server:run
+
+        $ git clone git@github.com:gdpweb/bilemo.git
+- Install dependencies with:
+    
+        $ composer install
+- Create database: 
+
+        $ bin/console doctrine:database:create
+- Update database:
+
+        $ bin/console doctrine:migrations:migrate
+- Load data fixtures:
+
+        $ bin/console doctrine:fixtures:load
+- Run PHP's built-in Web Server: 
+
+        $ bin/console server:run
 - Navigate to: localhost:8000
 
 
@@ -25,13 +37,13 @@ Generate the SSH keys with JWT
 
 Test Api BileMo with Postman
 -----------------
-####Authentification JWT
+####Authentication JWT
 - In the input field with the POST method, enter the following url : your_domain/api/login_check
 - In the body, select raw and JSON(application/json), write : 
 
         {
-        "username" : "client1",
-        "password" : "bilemo"
+            "username" : "client1",
+            "password" : "bilemo"
         }
 
 - Using the Bearer authorization and paste your token.
