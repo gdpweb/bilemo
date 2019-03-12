@@ -10,37 +10,38 @@ Installation
 -----------------
 - Clone the master branch
 
-        $ git clone git@github.com:gdpweb/bilemo.git
+        git clone git@github.com:gdpweb/bilemo.git
 - Install dependencies with:
     
-        $ composer install
+        composer install
 - Create database: 
 
-        $ bin/console doctrine:database:create
+        bin/console doctrine:database:create
 - Update database:
 
-        $ bin/console doctrine:migrations:migrate
+        bin/console doctrine:migrations:migrate
 - Load data fixtures:
 
-        $ bin/console doctrine:fixtures:load
+        bin/console doctrine:fixtures:load
 - Run PHP's built-in Web Server: 
 
-        $ bin/console server:run
-- Navigate to: localhost:8000
+        bin/console server:run
+- Navigate to: 
 
+        http://localhost:8000
 
 Generate the SSH keys with JWT
 -----------------
-    $ mkdir -p config/jwt 
-    $ openssl genrsa -out config/jwt/private.pem -aes256 4096
-    $ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+    mkdir -p config/jwt 
+    openssl genrsa -out config/jwt/private.pem -aes256 4096
+    openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 
 Test Api BileMo with Postman
 -----------------
 
 #### Authentication JWT
 
-- In the input field with the POST method, enter the following url : your_domain/api/login_check
+- In the input field with the POST method, enter the following url : http://your_domain/api/login_check
 - In the body, select raw and JSON(application/json), write : 
 
         {
